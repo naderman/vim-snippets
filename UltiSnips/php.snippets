@@ -11,12 +11,15 @@ endglobal
 
 ## Snippets from SnipMate, taken from
 ## https://github.com/scrooloose/snipmate-snippets.git
+snippet var "var"
+/** @var $1 */
+protected $2;
+
+endsnippet
 
 snippet gm "PHP Class Getter" b
 /**
- * Getter for $1
- *
- * @return ${2:string}
+ * ${2:@return string}
  */
 public function get${1/\w+\s*/\u$0/}()`!p snip.rv = ': '+t[2] if isPHPScalarTypesEnabled() else ''`
 {
@@ -26,16 +29,11 @@ endsnippet
 
 snippet sm "PHP Class Setter" b
 /**
- * Setter for $1
- *
- * @param ${2:string} $$1
- * @return ${3:`!p snip.rv=snip.basename`}
+ * @param ${2:string} $$1                                                                                                                               
  */
 public function set${1/\w+\s*/\u$0/}(${4:${2/(void|string|int|integer|double|float|object|boolear|null|mixed|number|resource)|(.*)/(?1::$2 )/}}$$1)
 {
-    $this->$1 = $$1;
-
-    ${5:return $this;}
+    $this->$1 = $$1;$5
 }
 endsnippet
 
